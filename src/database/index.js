@@ -1,5 +1,5 @@
-import pkg from "pg";
-const {Client} = pkg
+import { Client } from "pg";
+import "dotenv/config";
 
 const database = new Client(
   process.env.NODE_ENV === "test"
@@ -19,9 +19,9 @@ const database = new Client(
       }
 );
 
-export const startDatabase = async () => {
+const startDatabase = async () => {
   await database.connect();
-  console.log('database conectada')
+  console.log("database connected");
 };
 
-export default database;
+export { database, startDatabase };
